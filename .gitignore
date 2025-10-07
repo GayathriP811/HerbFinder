@@ -1,0 +1,18 @@
+# virtual envs
+.venv/
+venv/
+
+# python cache
+__pycache__/
+*.pyc
+
+# local env files
+.env
+
+# mac / windows cruft
+.DS_Store
+Thumbs.db
+
+# ignore uploaded images during development, but keep .gitkeep
+/static/uploads/*
+!/static/uploads/.gitkeep

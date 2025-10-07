@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herb Finder</title>
+    <style>
+        body {
+            background-color: #f0f8f5;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            color: #006400;
+        }
+        .upload-container {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            display: inline-block;
+        }
+        input[type="file"], input[type="submit"] {
+            margin: 10px;
+            padding: 10px;
+        }
+        img {
+            margin-top: 20px;
+            width: 300px;
+            border-radius: 10px;
+            border: 2px solid #006400;
+        }
+        .details {
+            margin-top: 20px;
+            background: #e8f5e9;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            text-align: left;
+        }
+        .details h3 {
+            color: #004d00;
+        }
+    </style>
+</head>
+<body>
+    <h1>🌿 Herb Finder 🌿</h1>
+
+    <div class="upload-container">
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="image" accept="image/*" required>
+            <br>
+            <input type="submit" value="Find">
+        </form>
+    </div>
+
+    {% if uploaded_image %}
+        <h3>Uploaded Image:</h3>
+        <img src="{{ url_for('static', filename='uploads/' + uploaded_image) }}" alt="Uploaded Image">
+
+        {% if herb_name %}
+        <div class="details">
+            <h3>Detected Herb: {{ herb_name }}</h3>
+            <p>{{ herb_description }}</p>
+        </div>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
